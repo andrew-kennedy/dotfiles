@@ -1,0 +1,102 @@
+"*":
+  "atom-beautify":
+    _analyticsUserId: "8611313d-3020-48c2-933d-c57273033c64"
+    js_end_with_comma: true
+    js_space_after_anon_function: true
+    language_c_default_beautifier: "clang-format"
+  "atom-material-ui":
+    colors:
+      abaseColor:
+        alpha: 1
+        blue: 147
+        green: 145
+        red: 0
+      accentColor:
+        alpha: 1
+        blue: 235
+        green: 235
+        red: 235
+      genAccent: true
+    fonts: {}
+    tabs:
+      tintedTabBar: true
+    treeView:
+      compactList: true
+    ui:
+      panelContrast: true
+      panelShadows: true
+  "atom-ternjs": {}
+  "autocomplete-clang": {}
+  "autocomplete-haskell":
+    useBackend: "haskell-ghc-mod"
+  "autocomplete-plus":
+    enableBuiltinProvider: false
+    useAlternateScoring: true
+  "autocomplete-python":
+    pythonExecutable: "python3"
+    useSnippets: "all"
+  core:
+    disabledPackages: [
+      "vim-mode"
+      "you-complete-me"
+    ]
+    themes: [
+      "native-ui"
+      "monokai-blackboard"
+    ]
+  editor:
+    fontFamily: "Input Mono"
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "9b1ae921-5cd9-7b61-a339-da6f62996fd6"
+  "file-icons":
+    onChanges: true
+  "git-diff":
+    showIconsInEditorGutter: true
+  "git-plus": {}
+  "haskell-ghc-mod": {}
+  linter:
+    errorPanelHeight: 68
+    showErrorTabLine: true
+  "linter-clang":
+    clangDefaultCFlags: "-Wall -std=c11 -Werror -Wpedantic"
+  "linter-eslint":
+    globalNodePath: "/Users/andrewkennedy/.npm-packages"
+    useGlobalEslint: true
+  "linter-jade": {}
+  "linter-javac": {}
+  "linter-pep8": {}
+  "linter-tidy": {}
+  "merge-conflicts":
+    gitPath: "git"
+  minimap:
+    absoluteMode: true
+  "node-debugger": {}
+  "one-dark-ui": {}
+  pigments:
+    mergeColorDuplicates: true
+  preview:
+    _analyticsUserId: "00181dc4-042c-4366-ae5b-9edfb25e0a66"
+  react: {}
+  "run-command": {}
+  "run-command2": {}
+  "spell-check": {}
+  "status-bar": {}
+  tabs:
+    enableVcsColoring: true
+    usePreviewTabs: true
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+    squashDirectoryNames: true
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false
+  "you-complete-me":
+    ycmdPath: '''
+      /Users/andrewkennedy/github/ycmd/ycmd/.
+      
+    '''
