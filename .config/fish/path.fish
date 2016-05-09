@@ -13,8 +13,12 @@
 # a great way to set $PATH.
 # A good resource is https://nothingbutsnark.svbtle.com/trying-out-the-fish-shell
 set --export --global ANDROID_TOOLS $HOME/android-sdk/platform-tools
-set --export --global NPM_PACKAGES $HOME/.npm-packages
-set --export --global NPM_CONFIG_PREFIX $NPM_PACKAGES
-set --export --global NODE_PATH "$NPM_PACKAGES/lib/node_modules $NODE_PATH"
-set fish_user_paths $NPM_PACKAGES/bin $fish_user_paths
+
+# These lines were for a manual npm install to avoid needing sudo
+# ========================================================
+# set --export --global NPM_PACKAGES $HOME/.npm-packages
+# set --export --global NPM_CONFIG_PREFIX $NPM_PACKAGES
+# set --export --global NODE_PATH "$NPM_PACKAGES/lib/node_modules $NODE_PATH"
+# set fish_user_paths $NPM_PACKAGES/bin $fish_user_paths
+
 set fish_user_paths $ANDROID_TOOLS $fish_user_paths

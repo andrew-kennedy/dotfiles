@@ -43,9 +43,9 @@ values."
      osx
      racket
      semantic
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      ;; spell-checking
      syntax-checking
      themes-megapack
@@ -260,6 +260,7 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (setq ns-function-modifier 'hyper)
+  (setq-default js2-semi nil)
   (setq-default js2-basic-offset 2)
   (setq-default js2-indent-level 2)
   (with-eval-after-load "company"

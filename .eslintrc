@@ -13,13 +13,15 @@
     "extends": "eslint:recommended",
     "rules": {
         "semi": ["error", "never"],
-        "func-names": "error",
+        "func-names": "warn",
         "brace-style": "error",
         "eqeqeq": ["error", "smart"],
         "camelcase": ["error", {"properties": "always"}],
         "quotes": ["error", "single", "avoid-escape"],
         "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+        "no-unused-vars": ["warn", { "vars": "all", "args": "after-used" }],
         "no-trailing-spaces": ["error", {"skipBlankLines": false}],
+        "no-console": ["off"],
         "indent": ["error", 2, {"VariableDeclarator": {"var": 2, "let": 2, "const": 3}, "SwitchCase": 1}],
         "comma-style": ["error", "first"]
     }
