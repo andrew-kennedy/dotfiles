@@ -29,7 +29,8 @@ values."
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t)
-     c-c++
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
      ;; better-defaults
