@@ -2,6 +2,7 @@ fisherman/anicode
 fisherman/await
 edc/bass
 fisherman/choices
+andrew-kennedy/fish-functions
 fisherman/get
 fisherman/getopts
 fisherman/git_util
