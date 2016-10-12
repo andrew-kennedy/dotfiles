@@ -4,5 +4,5 @@
           , "underscore"
           , "jquery"
           ]
-, "plugins": { "node": {}}
+, "plugins": { "node": {}, "requirejs": {}, "node_resolve": {}, "commonjs": {} }
 }
