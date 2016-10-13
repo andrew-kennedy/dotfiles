@@ -51,7 +51,9 @@ values."
      emacs-lisp
      emoji
      (git)
-     haskell
+     (haskell :variables
+              haskell-enable-hindent-style "johan-tibell"
+              haskell-completion-backend 'intero)
      html
      javascript
      markdown
