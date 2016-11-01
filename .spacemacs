@@ -57,7 +57,6 @@ values."
      markdown
      ;; org
      osx
-     racket
      (ranger :variables
              ranger-show-preview t)
      semantic
@@ -290,11 +289,11 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init', before layer configuration
+  "initialization function for user code.
+it is called immediately after `dotspacemacs/init', before layer configuration
 executes.
- This function is mostly useful for variables that need to be set
-before packages are loaded. If you are unsure, you should try in setting them in
+ this function is mostly useful for variables that need to be set
+before packages are loaded. if you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   )
 
@@ -305,18 +304,36 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; Make linums relative by default
+  (global-linum-mode nil)
+  (linum-relative-toggle)
+
+  ;; set the mac function key to be equivalent to the hyper key when held
   (setq ns-function-modifier 'hyper)
+
+  ;; don't error on lack of semicolons in js
   (setq-default js2-semi nil)
+  ;; 2 space offset
   (setq-default js2-basic-offset 2)
+  ;; 2 space indent
   (setq-default js2-indent-level 2)
+
+  ;; bind autocomplete to C-SPC
   (with-eval-after-load "company"
-    (global-set-key (kbd "S-SPC") 'company-complete))
+    (global-set-key (kbd "C-SPC") 'company-complete))
+
+  ;; Powerline seperator style
   (setq powerline-default-separator 'slant)
   (add-hook 'text-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
   (global-git-commit-mode t)
-  (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
-  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
+  ;; two lines at a time
+  (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+  ;; don't accelerate scrolling
+  (setq mouse-wheel-progressive-speed nil)
+  ;; scroll window under mouse
+  (setq mouse-wheel-follow-mouse 't)
 
   )
 
@@ -364,7 +381,7 @@ you should place your code here."
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (haskell-mode sourcerer-theme insert-shebang hide-comnt helm-purpose window-purpose imenu-list pytest intero git-link dumb-jump color-identifiers-mode zonokai-theme zen-and-art-theme web-mode web-beautify uuidgen underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stickyfunc-enhance stekene-theme srefactor powerline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme slim-mode seti-theme scss-mode sass-mode reverse-theme reveal-in-osx-finder railscasts-theme faceup purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pbcopy pastels-on-dark-theme spinner osx-trash organic-green-theme org-plus-contrib org-bullets omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc markdown-mode majapahit-theme lush-theme livid-mode skewer-mode simple-httpd link-hint light-soap-theme less-css-mode launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc jbeans-theme jazz-theme jade-mode ir-black-theme inkpot-theme hydra parent-mode heroku-theme hemisu-theme projectile request helm-css-scss hc-zenburn-theme haml-mode gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md gandalf-theme pkg-info epl flx flatui-theme flatland-theme fish-mode firebelly-theme farmhouse-theme eyebrowse evil-visual-mark-mode magit magit-popup git-commit with-editor smartparens iedit evil-ediff anzu goto-chg undo-tree highlight espresso-theme emoji-cheat-sheet-plus emmet-mode dracula-theme django-theme disaster diminish diff-hl darktooth-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme csv-mode company-web web-completion-data company-tern s dash-functional tern company-shell pos-tip company-emoji company-c-headers column-enforce-mode colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode cmake-mode clues-theme clang-format cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme base16-theme badwolf-theme yasnippet packed dash apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme helm avy helm-core async auto-complete popup rainbow-mode rainbow-identifiers helm-flyspell auto-dictionary smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger flycheck-pos-tip flycheck evil-magit racket-mode zenburn-theme monokai-theme solarized-theme helm-company helm-c-yasnippet company-statistics company-quickhelp company auto-yasnippet ac-ispell adaptive-wrap ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme)))
+    (xterm-color helm-hoogle anaconda-mode haskell-mode sourcerer-theme insert-shebang hide-comnt helm-purpose window-purpose imenu-list pytest intero git-link dumb-jump color-identifiers-mode zonokai-theme zen-and-art-theme web-mode web-beautify uuidgen underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stickyfunc-enhance stekene-theme srefactor powerline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme slim-mode seti-theme scss-mode sass-mode reverse-theme reveal-in-osx-finder railscasts-theme faceup purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pbcopy pastels-on-dark-theme spinner osx-trash organic-green-theme org-plus-contrib org-bullets omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc markdown-mode majapahit-theme lush-theme livid-mode skewer-mode simple-httpd link-hint light-soap-theme less-css-mode launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc jbeans-theme jazz-theme jade-mode ir-black-theme inkpot-theme hydra parent-mode heroku-theme hemisu-theme projectile request helm-css-scss hc-zenburn-theme haml-mode gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md gandalf-theme pkg-info epl flx flatui-theme flatland-theme fish-mode firebelly-theme farmhouse-theme eyebrowse evil-visual-mark-mode magit magit-popup git-commit with-editor smartparens iedit evil-ediff anzu goto-chg undo-tree highlight espresso-theme emoji-cheat-sheet-plus emmet-mode dracula-theme django-theme disaster diminish diff-hl darktooth-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme csv-mode company-web web-completion-data company-tern s dash-functional tern company-shell pos-tip company-emoji company-c-headers column-enforce-mode colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode cmake-mode clues-theme clang-format cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme base16-theme badwolf-theme yasnippet packed dash apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme helm avy helm-core async auto-complete popup rainbow-mode rainbow-identifiers helm-flyspell auto-dictionary smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger flycheck-pos-tip flycheck evil-magit racket-mode zenburn-theme monokai-theme solarized-theme helm-company helm-c-yasnippet company-statistics company-quickhelp company auto-yasnippet ac-ispell adaptive-wrap ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))

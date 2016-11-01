@@ -14,6 +14,7 @@
 # A good resource is https://nothingbutsnark.svbtle.com/trying-out-the-fish-shell
 set --export --global ANDROID_TOOLS $HOME/android-sdk/platform-tools
 set --export --global LOCAL_BIN $HOME/.local/bin
+set --export --global YARN_BIN (yarn global bin)
 
 # These lines were for a manual npm install to avoid needing sudo
 # ========================================================
@@ -24,4 +25,5 @@ set --export --global LOCAL_BIN $HOME/.local/bin
 
 set fish_user_paths $ANDROID_TOOLS $fish_user_paths
 set fish_user_paths $LOCAL_BIN $fish_user_paths
+set fish_user_paths $YARN_BIN $fish_user_paths
 
