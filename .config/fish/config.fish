@@ -12,3 +12,5 @@ set --export --global EDITOR "emacsclient --create-frame --no-wait --alternate-e
 
 set fish_term24bit 1
 
+set --export --global XDG_CONFIG_HOME $HOME/.config
+set --export --global XDG_DATA_HOME $HOME/.local/share
