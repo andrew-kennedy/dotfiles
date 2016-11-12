@@ -6,10 +6,12 @@ tap 'd12frosted/emacs-plus'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/dupes'
+tap 'homebrew/fuse'
 tap 'homebrew/services'
 tap 'neovim/neovim'
 tap 'railwaycat/emacsmacport'
 cask 'java'
+cask 'osxfuse'
 brew 'ack'
 brew 'docbook'
 brew 'asciidoc'
@@ -50,6 +52,7 @@ brew 'libgcrypt'
 brew 'libksba'
 brew 'pth'
 brew 'dirmngr'
+brew 'docutils'
 brew 'doxygen'
 brew 'duti'
 brew 'emojify'
@@ -120,6 +123,7 @@ brew 'mr'
 brew 'mysql'
 brew 'netcat'
 brew 'nmap'
+brew 'node'
 brew 'pandoc'
 brew 'postgresql'
 brew 'pyenv'
@@ -142,10 +146,13 @@ brew 'watchman'
 brew 'wget', args: ['with-iri']
 brew 'wiki'
 brew 'yadm'
+brew 'yarn'
 brew 'beeftornado/rmtree/brew-rmtree'
 brew 'd12frosted/emacs-plus/emacs-plus', args: ['with-cocoa', 'with-gnutls', 'with-imagemagick', 'with-spacemacs-icon']
 brew 'homebrew/dupes/libpcap'
+brew 'homebrew/fuse/sshfs'
 brew 'neovim/neovim/neovim'
+cask 'datagrip'
 cask 'font-fira-code'
 cask 'goofy'
 cask 'gpgtools'
@@ -162,11 +169,11 @@ cask 'mac2imgur'
 cask 'macdown'
 cask 'marked'
 cask 'megasync'
+cask 'messenger-for-desktop'
 cask 'micro-snitch'
 cask 'mkvtools'
 cask 'mojibar'
 cask 'openemu'
-cask 'osxfuse'
 cask 'postgres'
 cask 'puush'
 cask 'qlcolorcode'
@@ -183,7 +190,6 @@ cask 'slack'
 cask 'spectacle'
 cask 'spotify'
 cask 'spotify-notifications'
-cask 'sshfs'
 cask 'steam'
 cask 'suspicious-package'
 cask 'the-unarchiver'
@@ -194,15 +200,15 @@ cask 'webpquicklook'
 cask 'whatsapp'
 cask 'wineskin-winery'
 cask 'wireshark'
-mas 'LastPass (3.16.0)', id: 926036361
-mas 'Xcode (8.0)', id: 497799835
-mas 'Keynote (7.0)', id: 409183694
-mas 'iMovie (10.1.2)', id: 408981434
-mas 'Enchat (1.4)', id: 892221122
-mas 'Telegram Desktop (0.10.11)', id: 946399090
-mas 'Pages (6.0)', id: 409201541
-mas 'Telegram (2.27)', id: 747648890
-mas 'GarageBand (10.1.2)', id: 682658836
-mas 'Numbers (4.0)', id: 409203825
-mas 'Boom 2 (1.5)', id: 948176063
-mas 'Boxy (1.2.1)', id: 1053031090
+mas 'Numbers', id: 409203825
+mas 'Xcode', id: 497799835
+mas 'Keynote', id: 409183694
+mas 'iMovie', id: 408981434
+mas 'Enchat', id: 892221122
+mas 'Telegram Desktop', id: 946399090
+mas 'Pages', id: 409201541
+mas 'Telegram', id: 747648890
+mas 'GarageBand', id: 682658836
+mas 'LastPass', id: 926036361
+mas 'Boom 2', id: 948176063
+mas 'Boxy', id: 1053031090
