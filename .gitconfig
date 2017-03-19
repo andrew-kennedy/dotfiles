@@ -1,6 +1,7 @@
 [user]
 	email = andrewk36@gmail.com
 	name = Andrew Kennedy
+	signingkey = CFB9E865
 [color]
 	diff = auto
 	status = auto
