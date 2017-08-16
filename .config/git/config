@@ -1,0 +1,19 @@
+[user]
+  name = Andrew Kennedy
+  email = andrew.kennedy2@workday.com
+[init]
+  templatedir = ~/.config/git/templates
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+[alias]
+  review = !$XDG_CONFIG_HOME/git/scripts/gerrit-push-for.sh
+  sync = "!f() { \
+    echo \"Syncing master branch\" ; \
+    git pull --rebase origin master; \
+  }; \
+  f"
+[color]
+  ui = auto
+[merge]
+  tool = opendiff' >> $HOME/.config/git/config

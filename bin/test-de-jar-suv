@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+# This script takes a jar file as the first argument, and the ID of an SUV
+# as the second
+
+# Define this var in your shell environment or here
+# JENKINS_API_TOKEN=
+JENKINS_URL=https://ds-tools.megaleo.com/jenkins-cl
+JOB_NAME=cloudloader-suv-deploy-artifactory
+JOB_URL=$JENKINS_URL/job/$JOB_NAME
+JOB_STATUS_URL=${JOB_URL}/lastBuild/api/json
+DES_SUV_PATH=/data/workdaydevqa/suv/suvdata-editor-service
+DES_JAR_PATH=$1
+SUV_ID=$2
+SUV_DOMAIN=.workdaysuv.com
+
+if (( $# == 0 || $# > 2 )); then
+    echo "Rationale"
+    echo "    Upload locally built data-editor-service.jar to an SUV instance"
+    echo "    and restart that instance, optionally deploying cloudloader to "
+    echo "    that instance first."
+    echo
+    echo "Usage"
+    echo "    $0 <jarfile> <SUV-id>"
+    echo
+    exit 1
+fi
+restartAndClearLogs(){
+    $1/shutdown.sh
+    sleep 10
+    rm -f $1/logs/dataeditorservice.log
+    $1/startup.sh
+}
+
+# test if the path exists, if not we must deploy cloudloader
+ssh $SUV_ID$SUV_DOMAIN "[ -d $DES_SUV_PATH ]"
+
+if [ $? -ne 0 ]; then
+
+    echo "Remote directory $DES_SUV_PATH does not exist"
+    echo "Deploying cloudloader to the SUV using jenkins"
+
+    curl -X POST $JOB_URL/build \
+    --user $USER:$JENKINS_API_TOKEN \
+    --data-urlencode json='{"parameter": [
+    {"name": "SUV", "value": "'$SUV_ID'"}, 
+    {"name": "SUV_PASSWORD", "value": ""}, 
+    {"name": "SUV_TYPE", "value": "suv-ems-super"}, 
+    {"name": "SUV_RESERVATION_TOKEN", "value": ""}, 
+    {"name": "REFRESH_DB", "value": false}, 
+    {"name": "CLIENT_SOURCE", "value": "silver"}, 
+    {"name": "CLIENT_RPM", "value": "latest"}, 
+    {"name": "DE_SOURCE", "value": "silver"}, 
+    {"name": "DE_RPM", "value": "latest"}, 
+    {"name": "DS_AUTH_CLIENT_SOURCE", "value": "silver"}, 
+    {"name": "DS_AUTH_CLIENT_RPM", "value": "latest"}, 
+    {"name": "DL_SOURCE", "value": "silver"}, 
+    {"name": "DL_RPM", "value": "latest"}, 
+    {"name": "CONFIDENCE_LEVEL", "value": "internal"}, 
+    {"name": "RUN_EXPERIMENTAL_FEATURES", "value": false}]}'
+
+    echo "Build launched, waiting for completion..."
+
+    local GREP_RETURN_CODE=0
+    while [ $GREP_RETURN_CODE -eq 0 ]
+    do
+        sleep 30
+        # Grep will return 0 while the build is running:
+        curl --silent $JOB_STATUS_URL | grep result\":null > /dev/null
+        GREP_RETURN_CODE=$?
+    done
+fi
+
+echo "Copying Jar to SUV..."
+scp $DES_JAR_PATH $SUV_ID$SUV_DOMAIN:$DES_SUV_PATH/lib
+
+echo "Restarting DataEditorService and clearing logs"
+ssh -t $SUV_ID$SUV_DOMAIN "`declare -f restartAndClearLogs`; \
+    restartAndClearLogs $DES_SUV_PATH; \
+    cd $DES_SUV_PATH; \
+    exec \$SHELL -l"
+
